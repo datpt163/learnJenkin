@@ -2,10 +2,15 @@ version: 0.0
 os: linux
 
 files:
-  - source: target/demo-0.0.1-SNAPSHOT.jar
+  - source: /
     destination: /home/ubuntu/app
 
 hooks:
+  ApplicationStop:
+    - location: scripts/stop.sh
+      timeout: 300
+      runas: ubuntu
+
   ApplicationStart:
     - location: scripts/start.sh
       timeout: 300
